@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EUC Toolkit</string>
+    <string name="service_channel_name">Background operation indicator</string>
+    <string name="service_notification_title_wait">Waiting for connection </string>
+    <string name="explain_location_permission_requirement">Location permission is required to find and control Bluetooth LEDs strips</string>
+    <string name="permission_alert_title">About the permission request</string>
+    <string name="connected_to">Connected to: %s</string>
+    <string name="connected_euc_world">EUC World API</string>
+    <string name="connected_led_controller">LED controller</string>
+    <string name="ok">Ok</string>
+</resources>

@@ -1,0 +1,13 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Added after reading https://intellij-support.jetbrains.com/hc/en-us/articles/206544839-How-to-manage-projects-under-Version-Control-Systems
+/gradle.xml
+/libraries
+/vcs.xml
+/compiler.xml
+/jarRepositories.xml
+/misc.xml
+/codeStyles/
+/.name
