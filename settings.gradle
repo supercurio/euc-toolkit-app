@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "EUC Toolit"
+rootProject.name = "EUC Toolkit"
