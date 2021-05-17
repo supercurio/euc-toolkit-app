@@ -57,6 +57,9 @@ class VehicleState {
         return acceleration
     }
 
+    fun hasDataSource(newStatus: Boolean) = led.current?.setStatus(newStatus)
+
+
     data class SpeedPoint(val speed: Float, val time: Long)
 
 

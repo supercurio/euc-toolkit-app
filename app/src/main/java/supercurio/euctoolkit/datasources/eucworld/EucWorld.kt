@@ -47,8 +47,7 @@ class EucWorld(private val context: Context, private val coroutineScope: Corouti
             Log.i(TAG, "EUC World is not available anymore: stop")
         }
         status = newStatus
-
-        VehicleState.delete()
+        coroutineScope.launch(Dispatchers.IO) { vehicleState.hasDataSource(newStatus) }
     }
 
     private fun fetchWheelDataLoop() {
@@ -107,12 +106,11 @@ class EucWorld(private val context: Context, private val coroutineScope: Corouti
                     t.printStackTrace()
                 }
 
-
                 failureCount = 0
             } catch (t: Throwable) {
                 failureCount++
                 delay(100)
-                if (failureCount > 10) enable(false)
+                if (failureCount > 5) enable(false)
             }
 
             requestCount++
