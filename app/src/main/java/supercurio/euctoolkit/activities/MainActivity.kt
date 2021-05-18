@@ -14,6 +14,7 @@ import supercurio.euctoolkit.R
 import supercurio.euctoolkit.leds.FindLedController
 import supercurio.euctoolkit.leds.Sp110e
 import supercurio.euctoolkit.services.BackgroundService
+import supercurio.euctoolkit.updater.SelfUpdater
 import supercurio.euctoolkit.vehicle.VehicleState
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        SelfUpdater(this)
+            .suggestUpdateIfAvailable()
 
         when {
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==

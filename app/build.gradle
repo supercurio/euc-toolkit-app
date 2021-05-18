@@ -24,6 +24,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "distribChannel"
+    productFlavors {
+        playStore {
+            dimension "distribChannel"
+        }
+        web {
+            dimension "distribChannel"
+            applicationIdSuffix ".web"
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
