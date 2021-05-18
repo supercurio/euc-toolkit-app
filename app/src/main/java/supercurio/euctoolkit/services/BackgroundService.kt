@@ -19,6 +19,11 @@ class BackgroundService : Service() {
         throw Error("Should not be bound")
     }
 
+    override fun onCreate() {
+        dataSourceMonitor = DataSourceMonitor(applicationContext)
+        dataSourceMonitor.start()
+    }
+
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         startForeground(
             Notifications.ID_FOREGROUND_SERVICE,
@@ -27,9 +32,6 @@ class BackgroundService : Service() {
                 getString(R.string.service_notification_title_wait)
             )
         )
-
-        dataSourceMonitor = DataSourceMonitor(applicationContext)
-        dataSourceMonitor.start()
 
         led.enableBleScanning(applicationContext)
 
