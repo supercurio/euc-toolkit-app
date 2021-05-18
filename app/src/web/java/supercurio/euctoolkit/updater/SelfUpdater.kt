@@ -29,8 +29,10 @@ class SelfUpdater(private val activity: Activity) : ContextWrapper(activity.appl
                     .setMessage(
                         getString(
                             R.string.update_prompt_message,
+                            lastVersion.versionName,
                             lastVersion.versionCode,
-                            BuildConfig.VERSION_CODE
+                            BuildConfig.VERSION_NAME,
+                            BuildConfig.VERSION_CODE,
                         )
                     )
                     .setPositiveButton(R.string.update_now) { _, _ ->
@@ -51,7 +53,8 @@ class SelfUpdater(private val activity: Activity) : ContextWrapper(activity.appl
 
             LastVersion(
                 splitText[0].toLong(),
-                splitText[1]
+                splitText[1],
+                splitText[2]
             )
         } catch (t: Throwable) {
             t.printStackTrace()
@@ -92,18 +95,21 @@ class SelfUpdater(private val activity: Activity) : ContextWrapper(activity.appl
                     activity.startActivity(intent)
                 }
             } catch (t: Throwable) {
-                t.printStackTrace()
-                Toast.makeText(
-                    applicationContext,
-                    R.string.update_failed_download,
-                    Toast.LENGTH_LONG
-                ).show()
+                withContext(Dispatchers.Main) {
+                    t.printStackTrace()
+                    Toast.makeText(
+                        applicationContext,
+                        R.string.update_failed_download,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
 
         }
 
     class LastVersion(
         val versionCode: Long,
+        val versionName: String,
         val apkUrl: String
     )
 
