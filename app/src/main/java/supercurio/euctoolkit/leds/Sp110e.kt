@@ -6,11 +6,11 @@ import android.bluetooth.le.ScanFilter
 import android.content.Context
 import android.os.ParcelUuid
 import android.util.Log
-import supercurio.euctoolkit.AppStatus
-import supercurio.euctoolkit.AppStatusItem
 import supercurio.euctoolkit.ble.BleCommand
 import supercurio.euctoolkit.ble.SuspendingBluetoothGatt
 import supercurio.euctoolkit.ble.connectGattAndDiscoverServices
+import supercurio.euctoolkit.notifications.AppStatus
+import supercurio.euctoolkit.notifications.AppStatusItem
 import java.util.*
 import java.util.concurrent.locks.ReentrantLock
 import kotlin.concurrent.withLock

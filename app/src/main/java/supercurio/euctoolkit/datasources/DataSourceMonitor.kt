@@ -5,9 +5,9 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import supercurio.euctoolkit.AppStatus
-import supercurio.euctoolkit.AppStatusItem
 import supercurio.euctoolkit.datasources.eucworld.EucWorld
+import supercurio.euctoolkit.notifications.AppStatus
+import supercurio.euctoolkit.notifications.AppStatusItem
 
 class DataSourceMonitor(private val context: Context) {
 

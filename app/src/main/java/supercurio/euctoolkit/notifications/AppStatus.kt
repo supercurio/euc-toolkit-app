@@ -1,7 +1,6 @@
-package supercurio.euctoolkit
+package supercurio.euctoolkit.notifications
 
 import android.content.Context
-import supercurio.euctoolkit.notifications.Notifications
 
 object AppStatus {
     private val statusList = mutableSetOf<AppStatusItem>()

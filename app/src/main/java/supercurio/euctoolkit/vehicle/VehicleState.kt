@@ -2,10 +2,10 @@ package supercurio.euctoolkit.vehicle
 
 import android.os.SystemClock
 import android.util.Log
-import supercurio.euctoolkit.AppStatus
-import supercurio.euctoolkit.AppStatusItem
 import supercurio.euctoolkit.leds.FindLedController
 import supercurio.euctoolkit.leds.Sp110e
+import supercurio.euctoolkit.notifications.AppStatus
+import supercurio.euctoolkit.notifications.AppStatusItem
 import kotlin.math.absoluteValue
 
 class VehicleState {

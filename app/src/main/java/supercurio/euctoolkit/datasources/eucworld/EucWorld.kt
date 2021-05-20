@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.*
-import supercurio.euctoolkit.AppStatus
-import supercurio.euctoolkit.AppStatusItem
+import supercurio.euctoolkit.notifications.AppStatus
+import supercurio.euctoolkit.notifications.AppStatusItem
 import supercurio.euctoolkit.vehicle.VehicleState
 import java.io.ByteArrayOutputStream
 import java.net.InetAddress

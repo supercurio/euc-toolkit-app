@@ -9,8 +9,6 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.getSystemService
-import supercurio.euctoolkit.AppStatus
-import supercurio.euctoolkit.AppStatusItem
 import supercurio.euctoolkit.R
 import supercurio.euctoolkit.activities.MainActivity
 
