@@ -5,11 +5,13 @@ import android.bluetooth.le.ScanResult
 import android.bluetooth.le.ScanSettings
 import android.content.Context
 import android.util.Log
-import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import supercurio.euctoolkit.bluetoothManager
 
-class FindLedController {
+class FindLedController : CoroutineScope by MainScope() {
 
     var current: LedController? = null
 
@@ -43,7 +45,7 @@ class FindLedController {
                 current = null
                 enableBleScanning(context)
             }).apply {
-                GlobalScope.launch { connect() }
+                launch { connect() }
             }
         }
     }
@@ -64,6 +66,7 @@ class FindLedController {
         }
 
         fun delete() {
+            instance?.cancel()
             instance = null
         }
     }

@@ -7,20 +7,17 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.core.content.FileProvider
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import supercurio.euctoolkit.BuildConfig
 import supercurio.euctoolkit.R
 import java.io.File
 import java.net.URL
 
-class SelfUpdater(private val activity: Activity) : ContextWrapper(activity.applicationContext) {
+class SelfUpdater(private val activity: Activity) : ContextWrapper(activity.applicationContext),
+    CoroutineScope by MainScope() {
 
-    private val coroutineScope = MainScope()
 
-    fun suggestUpdateIfAvailable() = coroutineScope.launch {
+    fun suggestUpdateIfAvailable() = launch {
         checkLatestVersion()?.let { lastVersion ->
             if (lastVersion.versionCode > BuildConfig.VERSION_CODE)
                 AlertDialog.Builder(activity)
@@ -36,7 +33,7 @@ class SelfUpdater(private val activity: Activity) : ContextWrapper(activity.appl
                         )
                     )
                     .setPositiveButton(R.string.update_now) { _, _ ->
-                        coroutineScope.launch {
+                        launch {
                             requestInstallUpdate(lastVersion)
                         }
                     }
