@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<SeekBar>(R.id.seekBarSpeed).apply {
+        findViewById<SeekBar>(R.id.seekBarPatternSpeed).apply {
             max = 1023
 
             setOnSeekBarChangeListener(object :
@@ -136,6 +136,12 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             )
+
+        findViewById<Button>(R.id.buttonZeroSpeed).setOnClickListener {
+            val seekBar = findViewById<SeekBar>(R.id.seekBarVehicleSpeed)
+            val zeroPoint = seekBar.max / 2
+            seekBar.progress = zeroPoint
+        }
     }
 
     private fun showPermissionsAlertDialog() {

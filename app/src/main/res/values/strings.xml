@@ -8,4 +8,12 @@
     <string name="connected_euc_world">EUC World API</string>
     <string name="connected_led_controller">LED controller</string>
     <string name="ok">OK</string>
+    <string name="led_on">LED ON</string>
+    <string name="led_off">LED OFF</string>
+    <string name="brake_light">Brake Light</string>
+    <string name="light_pattern">Light pattern</string>
+    <string name="pattern_speed">Pattern speed</string>
+    <string name="brightness">Brightness</string>
+    <string name="vehicle_speed">Vehicle speed</string>
+    <string name="vehicle_speed_0">Set Vehicle speed to 0</string>
 </resources>
