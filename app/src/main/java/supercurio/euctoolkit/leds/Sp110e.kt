@@ -136,6 +136,8 @@ class Sp110e(
     private fun writeCommand(command: BleCommand) {
         characteristic?.apply {
             suspendingGatt?.setAndWriteCharacteristic(this, command.byteArray)
+            // Give some time for the controller to process the command
+            Thread.sleep(50)
         }
     }
 }
