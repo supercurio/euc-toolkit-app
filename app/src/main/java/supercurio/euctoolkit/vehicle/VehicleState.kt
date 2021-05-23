@@ -4,9 +4,9 @@ import android.os.SystemClock
 import android.util.Log
 import supercurio.euctoolkit.leds.FindLedController
 import supercurio.euctoolkit.leds.Sp110e
+import supercurio.euctoolkit.leds.Sp110ePatterns
 import supercurio.euctoolkit.notifications.AppStatus
 import supercurio.euctoolkit.notifications.AppStatusItem
-import kotlin.math.absoluteValue
 
 class VehicleState {
 
@@ -20,14 +20,14 @@ class VehicleState {
         if (!AppStatus.has(AppStatusItem.LED_CONTROLLER_CONNECTED)) return
 
         Log.i(TAG, "New speed: $newSpeed")
-        val nextLastSpeed = SpeedPoint(newSpeed.absoluteValue, SystemClock.elapsedRealtime())
+        val nextLastSpeed = SpeedPoint(newSpeed, SystemClock.elapsedRealtime())
 
         if (newSpeed != lastSpeed.speed) {
             val acceleration = calculateAcceleration(newSpeed)
 
             when {
                 newSpeed == 0f -> currentLed.setPresetAndSpeed(
-                    STOPPED_PRESET_NO,
+                    STOPPED_PRESET.pattern.patternId,
                     0f
                 )
 
@@ -37,8 +37,8 @@ class VehicleState {
                 }
 
                 else -> currentLed.setPresetAndSpeed(
-                    RIDING_PRESET_NO,
-                    newSpeed.absoluteValue / SPEED_MAX
+                    RIDING_PRESET.pattern.patternId,
+                    newSpeed / SPEED_MAX * 0.7f
                 )
             }
         }
@@ -49,8 +49,8 @@ class VehicleState {
     private fun calculateAcceleration(newSpeed: Float): Float {
         val newTime = SystemClock.elapsedRealtime()
 
-        val acceleration =
-            (newSpeed.absoluteValue - lastSpeed.speed) / (newTime - lastSpeed.time) * 1000 / 3.6f
+        val acceleration = (newSpeed - lastSpeed.speed) /
+                (newTime - lastSpeed.time) * 1000 / 3.6f
 
         Log.i(TAG, "Acceleration: $acceleration")
 
@@ -66,8 +66,8 @@ class VehicleState {
     companion object {
         private const val SPEED_MAX = 50
 
-        private const val RIDING_PRESET_NO = 3
-        private const val STOPPED_PRESET_NO = 64
+        private val RIDING_PRESET = Sp110ePatterns.PATTERN_4
+        private val STOPPED_PRESET = Sp110ePatterns.PATTERN_64
 
         private const val TAG = "VehicleState"
 

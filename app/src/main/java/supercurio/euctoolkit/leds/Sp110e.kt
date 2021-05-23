@@ -115,7 +115,9 @@ class Sp110e(
         WHITE_PULSE(63),
     }
 
-    private fun presetCommand(presetNo: Int) = BleCommand(presetNo, 0x09, 0xfa, 0x2c)
+    private fun presetCommand(presetNo: Int) =
+        BleCommand(presetNo, 0x09, 0xfa, 0x2c)
+
     private fun presetSpeedCommand(speed: Float) =
         BleCommand((speed * 255).roundToInt(), 0x10, 0x34, 0x03)
 
